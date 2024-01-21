@@ -1,0 +1,159 @@
+<! DOCTYPE html>      
+<html>          
+    <head>      
+<meta charset="UTF-8">      
+        <meta http-equiv = "Content-Type"      
+            content = "text/html; charset=UTF-8" />      
+        <title> Example of  Day Night Toggle using Jquery </title>      
+        <meta name = "description"/>      
+        <meta content = "width=800, initial-scale=1"      
+        name = "viewport" />       
+<script src = ?https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js?> </script>  
+<style>  
+body, .container {  
+   height: 100vh;  
+}  
+.container {  
+    width: 100%;  
+    display: flex;  
+    justify-content: center;  
+    animation-name: daytransition;  
+    animation-duration: 3s;  
+}  
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);  
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,400i,600,600i');  
+html {  
+  margin: 0;  
+  height: 120%;  
+  font-weight: 300;  
+  font-family: 'Josefin Sans', sans-serif;  
+  background-color: black;  
+  text-align: center;  
+}  
+body {  
+  margin: 0;  
+  height: 120%;  
+  font-weight: 300;  
+  font-family: 'Josefin Sans', sans-serif;  
+  background-color: black;  
+  text-align: center;  
+}  
+h1 {  
+  justify-content: center;  
+  align-content: flex-stt;  
+  min-width: 300px;  
+  color: #eee;  
+  text-align: center;  
+}  
+h2 {    
+    color: whitesmoke;   
+    font-size: 26px;   
+    font-family: 'Lato';  
+  text-align: center;  
+  color: #f27f2b;  
+}   
+@keyframes daytransition {  
+    from {  
+        background-color: #040018;  
+    }  
+    to {  
+        background-color: #fff;  
+    }  
+}  
+.text {  
+    position: absolute;  
+    top: 30%;  
+    font-size: 20px;  
+    text-align: center;  
+}  
+.p-lg {  
+    font-size: 28px;  
+}  
+button {  
+    width: 200px;  
+    padding: 20px;  
+    font-size: 20px;  
+    font-weight: 700;  
+    cursor: pointer;  
+    border: none;  
+}  
+.twenty {  
+    background: #fff;  
+    color: #3feb80;  
+    border: 2px solid #3feb80;  
+    border-radius: 50px;  
+    text-transform: uppercase;  
+    padding-left: 0;  
+    padding-right: 0;  
+}  
+.twenty span {  
+    position: relative;  
+    position: 400ms;  
+}  
+.twenty span::after {  
+    content: '\203A';  
+    position: absolute;  
+    opacity: 0;  
+    right: -10px;  
+    transition: 400ms ease-out 100ms;  
+}  
+.twenty:hover span::after {  
+    opacity: 1;  
+    right: -20px;  
+}  
+.p-sm {  
+    margin: 30px;  
+}  
+.night {  
+    animation-name: nighttransition;  
+    animation-duration: 3s;  
+    background-color: #040018 !important;  
+}  
+@keyframes nighttransition {  
+    from {  
+        background-color: #fff;  
+    }  
+    to {  
+        background-color: #040018;  
+    }  
+}  
+.text-night {  
+    color: #c5b2cc;  
+}  
+.btn {  
+    margin: 30px;  
+    background-color: #6f6f8e !important;  
+    color: #FBFFC9 !important;  
+}  
+.btn-night {  
+    background-color: #FBFFC9 !important;  
+    color: #6f6f8e !important;  
+}  
+</style>  
+<body>  
+        <div class = "container">  
+            <div class = "text">  
+        <h1> Example </h1>  
+          <h2> Day and Night Modes using Jquery </h2>  
+        <button class = "twenty btn btn-lg" > <span> Night Mode Off </span> </button>  
+            </div>  
+        </div>  
+<script>  
+$(document).ready(function() {  
+    $(".btn").click(function() {  
+        if ($(".container").hasClass("night")) {  
+            $(".container").removeClass("night");  
+            $(".btn").removeClass("btn-night").text("Night Mode Off");  
+            $(".text").removeClass("text-night");  
+            $(".p-sm").text("Turn on the night mode to change the background to dark.");  
+        } else {  
+            $(".container").addClass("night");  
+            $(".btn").addClass("btn-night").text("Night Mode On");  
+            $(".text").addClass("text-night");  
+            $(".p-sm").text("Night mode is active. Turn off the night mode to change the background to light.");  
+        }  
+    });  
+});  
+</script>  
+</body>  
+</html>

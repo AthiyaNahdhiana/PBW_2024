@@ -1,0 +1,358 @@
+<! DOCTYPE html>      
+<html>          
+    <head>      
+<meta charset="UTF-8">      
+        <meta http-equiv = "Content-Type"      
+            content = "text/html; charset=UTF-8" />      
+        <title> Example of  Day Night Toggle using Jquery </title>      
+        <meta name = "description"/>      
+        <meta content = "width=800, initial-scale=1"      
+        name = "viewport" />       
+<script src = ?https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js?> </script>  
+<style>  
+@import url('https://fonts.googleapis.com/css?family=Nunito:800i&display=swap');  
+h1 {  
+  justify-content: center;  
+  min-width: 100px;  
+  color: #eee;  
+  text-align: center;  
+}  
+h2 {    
+    color: whitesmoke;   
+    font-size: 26px;   
+    font-family: 'Lato';  
+  text-align: center;  
+  color: #f27f2b;  
+}   
+html, body {  
+  margin: 0;  
+  padding: 0;  
+  box-sizing: border-box;  
+  font-family: 'Nunito', sans-serif;  
+  font-size: 40px;  
+  background: #104e0c;  
+}  
+  
+* {  
+  box-sizing: inherit;  
+}  
+.wrapper {  
+  position: absolute;  
+  top: 80%;  
+  left: 50%;  
+  transform: translate(-50%, -50%);  
+}  
+body {  
+  margin: 0;  
+  height: 120%;  
+  font-weight: 300;  
+  font-family: 'Josefin Sans', sans-serif;  
+  background-color: #7c1e1e;  
+  text-align: center;  
+}  
+#checkbox {  
+  opacity: 0;  
+  height: 0;  
+  width: 0;  
+}  
+.toggle {  
+  position: relative;  
+  cursor: pointer;  
+  display: inline-block;  
+  width: 200px;  
+  height: 100px;  
+  background: #615872;  
+  border-radius: 50px;  
+  transition: 500ms;  
+  overflow: hidden;  
+}  
+.toggle-btn {  
+  position: absolute;  
+  display: inline-block;  
+  top: 7px;  
+  left: 6px;  
+  width: 86px;  
+  height: 86px;  
+  border-radius: 50%;  
+  background: #FAEAF1;  
+  overflow: hidden;  
+  box-shadow: 0 0 35px 4px rgba(255, 255, 255);  
+  transition: all 500ms ease-out;  
+}  
+.cr {  
+  position: absolute;  
+  display: inline-block;  
+  background: #FAEAF1;  
+  border-radius: 50%;  
+  transition: 500ms;  
+}  
+.cr-1 {  
+  background: #FFFFF9;  
+  width: 86px;  
+  height: 86px;  
+  left: 10px;  
+  bottom: 10px;  
+}  
+.cr-2 {  
+  width: 20px;  
+  height: 20px;  
+  top: -7px;  
+  left: 44px;  
+}  
+.cr-3 {  
+  width: 16px;  
+  height: 16px;  
+  top: 20px;  
+  right: -4px;  
+}  
+.cr-4 {  
+  width: 10px;  
+  height: 10px;  
+  top: 24px;  
+  left: 30px;  
+}  
+.cr-5 {  
+  width: 15px;  
+  height: 15px;  
+  top: 40px;  
+  left: 48px;  
+}  
+.cr-6 {  
+  width: 10px;  
+  height: 10px;  
+  top: 48px;  
+  left: 20px;  
+}  
+.cr-7 {  
+  width: 12px;  
+  height: 12px;  
+  bottom: 5px;  
+  left: 35px;  
+}  
+.st {  
+  position: absolute;  
+  display: inline-block;  
+  border-radius: 50%;  
+  background: #FFF;  
+  box-shadow: 1px 0 2px 2px rgba(255, 255, 255);  
+}  
+  
+.st-1 {  
+  width: 6px;  
+  height: 6px;  
+  right: 90px;  
+  bottom: 40px;  
+}  
+.st-2 {  
+  width: 8px;  
+  height: 8px;  
+  right: 70px;  
+  top: 10px;  
+}  
+.st-3 {  
+  width: 5px;  
+  height: 5px;  
+  right: 60px;  
+  bottom: 15px;  
+}  
+.st-4 {  
+  width: 3px;  
+  height: 3px;  
+  right: 40px;  
+  bottom: 50px;  
+}  
+.st-5 {  
+  width: 4px;  
+  height: 4px;  
+  right: 10px;  
+  bottom: 35px;  
+}  
+.st-6, .st-7, .st-8 {  
+  width: 10px;  
+  height: 2px;  
+  border-radius: 2px;  
+  transform: rotate(-45deg);  
+  box-shadow: 5px 0px 4px 1px #FFF;  
+  animation-name: travel;  
+  animation-duration: 1.5s;  
+  animation-timing-function: ease-out;  
+  animation-iteration-count: infinite;  
+}  
+.st-6 {  
+  right: 30px;  
+  bottom: 30px;  
+  animation-delay: -2s;  
+}  
+.st-7 {  
+  right: 50px;  
+  bottom: 60px;  
+}  
+.st-8 {  
+  right: 90px;  
+  top: 10px;  
+  animation-delay: -4s;  
+}  
+@keyframes travel {  
+  0% {  
+    transform: rotate(-45deg) translateX(70px);  
+  }  
+  50% {  
+    transform: rotate(-45deg) translateX(-20px);  
+    box-shadow: 5px 0px 6px 1px #FFF;  
+  }  
+  100% %  
+    transform: rotate(-45deg) translateX(-30px);  
+    width: 2px;  
+    height: 2px;  
+    opacity: 0;  
+    box-shadow: none;  
+  }  
+}  
+#checkbox:checked + .toggle {  
+  background: #61bcc9;  
+}  
+#checkbox:checked + .toggle .toggle-btn {  
+  background: #F7FFFF;  
+  transform: translateX(102px);  
+  box-shadow: 0 0 35px 5px rgba(255, 255, 255);  
+}  
+#checkbox:checked + .toggle .toggle-btn .cr {  
+  transform: rotate(-45deg) translateX(70px);  
+}  
+#checkbox:checked + .toggle .st {  
+  animation: move 2s infinite;  
+  transform: none;  
+  box-shadow: none;  
+}  
+#checkbox:checked + .toggle .st-1 {  
+  width: 40px;  
+  height: 10px;  
+  border-radius: 10px;  
+  background: #FFF;  
+  left: 20px;  
+  top: 25px;  
+  box-shadow: none;  
+}  
+#checkbox:checked + .toggle .st-2 {  
+  width: 12px;  
+  height: 12px;  
+  background: #FFF;  
+  left: 26px;  
+  top: 23px;  
+  box-shadow: -1px 0 2px 0 rgba(0, 0 , 0, 0.1);  
+}  
+#checkbox:checked + .toggle .st-3 {  
+  width: 16px;  
+  height: 16px;  
+  background: #FFF;  
+  left: 35px;  
+  top: 19px;  
+  box-shadow: -1px 0 2px 0 rgba(0, 0 , 0, 0.1);  
+}  
+#checkbox:checked + .toggle .st-4 {  
+  width: 14px;  
+  height: 14px;  
+  background: #FFF;  
+  left: 46px;  
+  top: 21px;  
+  box-shadow: -1px 0 2px 0 rgba(0, 0 , 0, 0.1);  
+}  
+#checkbox:checked + .toggle .st-5 {  
+  width: 60px;  
+  height: 15px;  
+  border-radius: 15px;  
+  background: #FFF;  
+  left: 30px;  
+  bottom: 20px;  
+  box-shadow: none;  
+}  
+#checkbox:checked + .toggle .st-6 {  
+  width: 18px;  
+  height: 18px;  
+  background: #FFF;  
+  border-radius: 50%;  
+  left: 38px;  
+  bottom: 20px;  
+  box-shadow: -1px 0 2px 0 rgba(0, 0 , 0, 0.1);  
+}  
+#checkbox:checked + .toggle .st-7 {  
+  width: 24px;  
+  height: 24px;  
+  background: #FFF;  
+  border-radius: 50%;  
+  left: 52px;  
+  bottom: 20px;  
+  box-shadow: -1px 0 2px 0 rgba(0, 0 , 0, 0.1);  
+}  
+#checkbox:checked + .toggle .st-8 {  
+  width: 21px;  
+  height: 21px;  
+  background: #FFF;  
+  border-radius: 50%;  
+  left: 70px;  
+  top: 59px;  
+  box-shadow: -1px 0 2px 0 rgba(0, 0 , 0, 0.1);  
+}  
+@keyframes move {  
+  0% {  
+    transform: none;  
+  }  
+  25% {  
+    transform: translateX(2px);  
+  }  
+  100% {  
+    transform: translateX(-2px);  
+  }  
+}  
+p {  
+  text-align: center;  
+  letter-spacing: 15px;  
+  background: #34495e;  
+  color: #FFF;  
+}  
+p.morning {  
+  background: #e67e22;  
+}  
+</style>  
+  <body>  
+    <h1> Example </h1>  
+          <h2> Day and Night Modes using Jquery </h2>  
+    <div class="wrapper">  
+      <input type="checkbox" id="checkbox">  
+      <label for="checkbox" class="toggle">  
+        <span class="toggle-button">  
+          <span class="cr cr-1"> </span>  
+          <span class="cr cr-2"> </span>  
+          <span class="cr cr-3"> </span>     
+          <span class="cr cr-4"> </span>  
+          <span class="cr cr-5"> </span>  
+          <span class="cr cr-6"> </span>  
+          <span class="cr cr-7"> </span>  
+        </span>  
+        <span class="st st-1"> </span>  
+        <span class="st st-2"> </span>  
+        <span class="st st-3"> </span>  
+        <span class="st st-4"> </span>  
+        <span class="st st-5"> </span>  
+        <span class="st st-6"> </span>  
+        <span class="st st-7"> </span>  
+        <span class="st st-8"> </span>  
+      </label>  
+    </div>  
+    <p> Good Night! </p>  
+  </body>  
+ <script>  
+const wrapper = document.querySelector('.wrapper');  
+const para = document.querySelector('p')  
+wrapper.addEventListener('change', function(e) {  
+  if(e.target.checked) {  
+    para.classList.add('morning');  
+    para.textContent = 'Good Morning';  
+  } else {  
+    para.classList.remove('morning');  
+    para.textContent = 'Good Night!';  
+  }  
+})  
+</script>  
+</body>  
+</html>  
